@@ -1,0 +1,119 @@
+{
+ "model": "sentence-transformers/all-MiniLM-L6-v2",
+ "chunks": [
+  {
+   "text": "Nimbus Orbit Technologies Pvt. Ltd. Employee Handbook 1. About the Company Nimbus Orbit Technologies Pvt. Ltd. is a software services company founded in 2014. Its head office is in Pune, Maharashtra, and it has a development centre in Bengaluru. The company builds cloud and data products for clients in retail, logistics and healthcare. The company employs around 420 people. It is managed by a leadership team that reports to the Board of Directors. Our values are ownership, honesty, customer focus and continuous learning. Every employee receives an annual learning budget of INR 20,000 for courses, certifications and books related to their role, approved by the reporting manager. New joiners attend a two-day induction programme in their first week. It covers the company's products, these policies, the HRMS portal and information security basics",
+   "source": "Employee_Handbook.pdf",
+   "page": 1,
+   "chunk_id": 0
+  },
+  {
+   "text": ". It covers the company's products, these policies, the HRMS portal and information security basics. Each new joiner is assigned a buddy from their team for the first 90 days. This handbook explains the working rules that apply to every full-time employee. Separate documents describe the Leave Policy, the IT Security Policy and the Travel and Expense Policy. Nimbus Orbit Technologies Pvt. Ltd. is a fictional company created for a student project. These policies are sample documents for testing a RAG chatbot.",
+   "source": "Employee_Handbook.pdf",
+   "page": 1,
+   "chunk_id": 1
+  },
+  {
+   "text": "2. Working Hours and Hybrid Work Standard office hours are 9:30 AM to 6:30 PM, Monday to Friday, including a one-hour lunch break. Core hours, when every employee must be available for meetings, are 11:00 AM to 4:00 PM. The company follows a hybrid model. Employees must work from the office at least three days a week. Tuesday and Thursday are fixed office days for all teams; the third day is agreed with the reporting manager. Work on a weekend or a public holiday must be approved in advance by the reporting manager and is compensated with one compensatory off day, which must be used within 30 days.",
+   "source": "Employee_Handbook.pdf",
+   "page": 2,
+   "chunk_id": 2
+  },
+  {
+   "text": "3. Attendance Attendance is recorded with the biometric system at the office entrance, and through the HRMS portal on work-from-home days. Monthly attendance percentage is calculated as the number of days present divided by the number of working days in the month, multiplied by 100. Approved leave and official travel days are counted as present. Arriving more than 15 minutes after 9:30 AM is recorded as a late mark. Three late marks in one calendar month are converted into a half-day of leave. Employees whose monthly attendance falls below 85 percent for two consecutive months will have a review meeting with HR.",
+   "source": "Employee_Handbook.pdf",
+   "page": 3,
+   "chunk_id": 3
+  },
+  {
+   "text": "4. Code of Conduct Employees are expected to treat colleagues, clients and partners with respect. Harassment or discrimination of any kind is not tolerated and should be reported to the Internal Committee. The dress code is business casual from Monday to Thursday. Fridays are casual dress days. Formal wear is required for client visits. Employees must declare any conflict of interest, such as a family member working for a competitor or a client, to HR within 15 days of becoming aware of it. Gifts from clients or vendors worth more than INR 2,000 must be declared to the Compliance team. Employees must not share confidential company or client information on social media. Only the Marketing team may speak to the press on behalf of the company. Concerns about unethical behaviour can be raised confidentially through the whistleblower channel managed by the Ethics Committee",
+   "source": "Employee_Handbook.pdf",
+   "page": 4,
+   "chunk_id": 4
+  },
+  {
+   "text": ". Concerns about unethical behaviour can be raised confidentially through the whistleblower channel managed by the Ethics Committee. Retaliation against anyone who raises a concern in good faith is a serious violation of this code.",
+   "source": "Employee_Handbook.pdf",
+   "page": 4,
+   "chunk_id": 5
+  },
+  {
+   "text": "5. Probation, Reviews and Notice Period New employees are on probation for six months from the date of joining. The probation period may be extended once by up to three months. Performance reviews take place twice a year, in April and October. Salary revisions are announced after the April review cycle. The notice period is 60 days for confirmed employees and 30 days during probation. Unused earned leave may not be adjusted against the notice period. On the last working day, employees must return the laptop, ID card and access card to the IT and Admin teams.",
+   "source": "Employee_Handbook.pdf",
+   "page": 5,
+   "chunk_id": 6
+  },
+  {
+   "text": "Nimbus Orbit Technologies Pvt. Ltd. IT Security Policy 1. Purpose This policy protects the information, systems and devices of Nimbus Orbit Technologies Pvt. Ltd. and its clients. It applies to all employees, interns and contractors. Nimbus Orbit Technologies Pvt. Ltd. is a fictional company created for a student project. These policies are sample documents for testing a RAG chatbot.",
+   "source": "IT_Security_Policy.pdf",
+   "page": 1,
+   "chunk_id": 7
+  },
+  {
+   "text": "2. Passwords and Account Security Passwords must be at least 12 characters long and include upper-case letters, lower-case letters, numbers and symbols. Passwords must be changed every 90 days and the last 5 passwords cannot be reused. Multi-factor authentication (MFA) is mandatory for email, VPN and all cloud consoles. Passwords must never be shared, even with the IT team. Employees should use the company password manager to store work passwords. Writing passwords on paper or saving them in browser notes is not allowed. Accounts are locked for 30 minutes after 5 failed login attempts. Accounts of employees who leave the company are disabled on their last working day.",
+   "source": "IT_Security_Policy.pdf",
+   "page": 2,
+   "chunk_id": 8
+  },
+  {
+   "text": "3. Devices and Data Company laptops are encrypted and must be locked whenever they are left unattended. Personal USB storage drives are not allowed on company laptops. Client data may only be stored in approved company systems. Remote access to internal systems is allowed only through the company VPN. Personal email or personal cloud storage must not be used for company or client files.",
+   "source": "IT_Security_Policy.pdf",
+   "page": 3,
+   "chunk_id": 9
+  },
+  {
+   "text": "4. Reporting Security Incidents A lost or stolen laptop or phone, a suspected phishing email, or any other security incident must be reported to the IT Security team within 1 hour of discovery. Incidents are reported by raising a ticket on the IT Service Desk portal marked as Priority 1, or by calling the internal security hotline at extension 4040. Employees must not try to investigate or fix a security incident on their own.",
+   "source": "IT_Security_Policy.pdf",
+   "page": 4,
+   "chunk_id": 10
+  },
+  {
+   "text": "Nimbus Orbit Technologies Pvt. Ltd. Leave Policy 1. Purpose and Scope This policy describes the types of leave available to full-time employees of Nimbus Orbit Technologies Pvt. Ltd.. The leave year runs from 1 January to 31 December. All leave is applied for and approved through the HRMS portal. Interns and contract staff follow the terms written in their contracts. Nimbus Orbit Technologies Pvt. Ltd. is a fictional company created for a student project. These policies are sample documents for testing a RAG chatbot.",
+   "source": "Leave_Policy.pdf",
+   "page": 1,
+   "chunk_id": 11
+  },
+  {
+   "text": "2. Earned Leave Every employee receives 18 days of earned leave per year. Earned leave is credited at 1.5 days per month. Unused earned leave can be carried forward to the next year, up to a maximum balance of 30 days. Any balance above 30 days lapses on 31 December. At the time of exit, up to 30 days of earned leave balance is paid out (encashed) based on basic salary.",
+   "source": "Leave_Policy.pdf",
+   "page": 2,
+   "chunk_id": 12
+  },
+  {
+   "text": "3. Sick Leave and Casual Leave Employees receive 10 days of sick leave per year. Sick leave cannot be carried forward. A medical certificate is required for sick leave of more than two consecutive days. Employees receive 7 days of casual leave per year for personal work. Casual leave cannot be taken for more than 3 days at a stretch and cannot be combined with earned leave.",
+   "source": "Leave_Policy.pdf",
+   "page": 3,
+   "chunk_id": 13
+  },
+  {
+   "text": "4. Parental, Bereavement and Other Leave Maternity leave is 26 weeks with full pay, for up to two children. Paternity leave is 10 working days, to be taken within three months of the child's birth. Bereavement leave of 5 days is granted on the death of an immediate family member. Compensatory off earned for approved weekend work is described in the Employee Handbook and must be used within 30 days. Leave for marriage is not a separate category; employees may use earned leave for their own wedding.",
+   "source": "Leave_Policy.pdf",
+   "page": 4,
+   "chunk_id": 14
+  },
+  {
+   "text": "5. Applying for Leave All leave must be applied for in the HRMS portal and approved by the reporting manager before it is taken. Planned leave, such as a vacation, must be applied for at least 7 days in advance. Leave of more than 5 consecutive working days must be applied for at least 30 days in advance so that the team can plan cover. Unplanned leave because of illness or an emergency must be informed to the reporting manager by 10:00 AM on the same day and applied for in HRMS within 2 working days of returning to work. Leave taken without approval is treated as leave without pay. Repeated unapproved absence may lead to disciplinary action. Questions about leave balances should be raised with the HR team through the HRMS helpdesk.",
+   "source": "Leave_Policy.pdf",
+   "page": 5,
+   "chunk_id": 15
+  },
+  {
+   "text": "Nimbus Orbit Technologies Pvt. Ltd. Travel and Expense Policy 1. Scope and Approval This policy covers business travel and expense claims for employees of Nimbus Orbit Technologies Pvt. Ltd.. All business travel must be approved in advance by the reporting manager through the travel request form in HRMS. Nimbus Orbit Technologies Pvt. Ltd. is a fictional company created for a student project. These policies are sample documents for testing a RAG chatbot.",
+   "source": "Travel_Expense_Policy.pdf",
+   "page": 1,
+   "chunk_id": 16
+  },
+  {
+   "text": "2. Travel and Accommodation Employees travel by economy class for flights shorter than 4 hours. Business class may be approved by a Vice President for flights longer than 8 hours. The daily allowance (per diem) for domestic travel is INR 2,500 in metro cities and INR 1,800 in other cities. It covers meals and local transport. Hotel stays are limited to INR 6,000 per night in metro cities and INR 4,000 per night in other cities. For international travel, the per diem is USD 75 per day and hotels must be booked through the company travel desk. Travel insurance is arranged by the travel desk for every international trip. Train travel is by AC 2-tier for journeys up to 12 hours. Cabs to and from the airport are reimbursed at actual cost when receipts are provided.",
+   "source": "Travel_Expense_Policy.pdf",
+   "page": 2,
+   "chunk_id": 17
+  },
+  {
+   "text": "3. Expense Claims Expense claims must be submitted in HRMS within 15 days of returning from the trip. Claims submitted after 15 days need approval from the department head. Original receipts are required for every expense above INR 500. Approved claims are reimbursed with the next monthly salary. Alcohol, personal entertainment and traffic fines are not reimbursed.",
+   "source": "Travel_Expense_Policy.pdf",
+   "page": 3,
+   "chunk_id": 18
+  }
+ ]
+}

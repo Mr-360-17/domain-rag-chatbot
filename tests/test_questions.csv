@@ -1,0 +1,21 @@
+id,type,question,expected_source,expected_page,answer_keywords
+1,answerable,How many earned leave days do employees get per year?,Leave_Policy.pdf,2,18
+2,answerable,What is the maximum earned leave balance that can be carried forward?,Leave_Policy.pdf,2,30
+3,answerable,When is a medical certificate needed for sick leave?,Leave_Policy.pdf,3,two|2
+4,answerable,How long is paternity leave?,Leave_Policy.pdf,4,10
+5,answerable,How many days in advance must planned leave be applied for?,Leave_Policy.pdf,5,7
+6,answerable,How is monthly attendance calculated?,Employee_Handbook.pdf,3,working days
+7,answerable,What happens if I get three late marks in a month?,Employee_Handbook.pdf,3,half
+8,answerable,What are the core working hours?,Employee_Handbook.pdf,2,11
+9,answerable,How many days a week must employees work from the office?,Employee_Handbook.pdf,2,three|3
+10,answerable,What is the notice period for a confirmed employee?,Employee_Handbook.pdf,5,60
+11,answerable,When are performance reviews held?,Employee_Handbook.pdf,5,April
+12,answerable,What is the minimum password length?,IT_Security_Policy.pdf,2,12
+13,answerable,How quickly must a lost laptop be reported?,IT_Security_Policy.pdf,4,1 hour|one hour
+14,answerable,Can I use a personal USB drive on my company laptop?,IT_Security_Policy.pdf,3,not allowed|no
+15,answerable,What is the daily allowance for travel to a metro city?,Travel_Expense_Policy.pdf,2,"2,500|2500"
+16,answerable,Within how many days must expense claims be submitted?,Travel_Expense_Policy.pdf,3,15
+17,unavailable,Who is the company CEO?,,,
+18,unavailable,What is the company's current share price?,,,
+19,unavailable,How much annual bonus do employees receive?,,,
+20,unavailable,Is there a gym at the office?,,,

@@ -1,0 +1,7 @@
+[server]
+maxUploadSize = 10
+# The watcher walks every transformers sub-module and crashes on optional vision imports.
+fileWatcherType = "none"
+
+[browser]
+gatherUsageStats = false

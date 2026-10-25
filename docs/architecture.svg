@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 470" width="980" height="470" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#1f3a5f"/>
+    </marker>
+    <style>
+      .box { fill:#f2f6fb; stroke:#1f3a5f; stroke-width:1.5; }
+      .llm { fill:#efe9fb; stroke:#5b3fa8; stroke-width:1.5; }
+      .db  { fill:#fff6e5; stroke:#c98a12; stroke-width:1.5; }
+      .ui  { fill:#e3f0e6; stroke:#2e6b3f; stroke-width:1.5; }
+      .t { font-size:14px; font-weight:600; fill:#12263f; }
+      .s { font-size:11px; fill:#3b4b5e; }
+      .f { font-size:10.5px; fill:#1f5fa8; font-family:Consolas, monospace; }
+      .lane { font-size:13px; font-weight:700; fill:#1f3a5f; letter-spacing:.5px; }
+      .flow { stroke:#1f3a5f; stroke-width:1.8; fill:none; marker-end:url(#a); }
+      .dash { stroke:#c98a12; stroke-width:1.8; fill:none; stroke-dasharray:6 4; marker-end:url(#a); }
+    </style>
+  </defs>
+  <text x="490" y="26" text-anchor="middle" font-size="18" font-weight="700" fill="#12263f">Domain-Specific RAG Chatbot - architecture</text>
+
+  <!-- Indexing lane -->
+  <rect x="12" y="40" width="956" height="150" rx="12" fill="#fafbfd" stroke="#d7dee8"/>
+  <text class="lane" x="26" y="60">1. INDEXING (when documents are processed)</text>
+
+  <rect class="ui" x="26" y="74" width="165" height="96" rx="9"/>
+  <text class="t" x="38" y="96">Upload PDFs</text>
+  <text class="s" x="38" y="116">1-5 PDFs, max 10 MB each</text>
+  <text class="s" x="38" y="131">type / size validated</text>
+  <text class="f" x="38" y="156">app.py</text>
+
+  <rect class="box" x="216" y="74" width="170" height="96" rx="9"/>
+  <text class="t" x="228" y="96">Text extraction</text>
+  <text class="s" x="228" y="116">pypdf, page by page</text>
+  <text class="s" x="228" y="131">keeps file name + page no.</text>
+  <text class="f" x="228" y="156">document_loader.py</text>
+
+  <rect class="box" x="411" y="74" width="170" height="96" rx="9"/>
+  <text class="t" x="423" y="96">Chunking</text>
+  <text class="s" x="423" y="116">900 chars, 150 overlap</text>
+  <text class="s" x="423" y="131">RecursiveCharacterTextSplitter</text>
+  <text class="f" x="423" y="156">document_loader.py</text>
+
+  <rect class="box" x="606" y="74" width="170" height="96" rx="9"/>
+  <text class="t" x="618" y="96">Embeddings</text>
+  <text class="s" x="618" y="116">all-MiniLM-L6-v2</text>
+  <text class="s" x="618" y="131">384-dim, L2-normalised</text>
+  <text class="f" x="618" y="156">vector_store.py</text>
+
+  <rect class="db" x="801" y="74" width="155" height="96" rx="9"/>
+  <text class="t" x="813" y="96">FAISS index</text>
+  <text class="s" x="813" y="116">IndexFlatIP = cosine</text>
+  <text class="s" x="813" y="131">+ chunk metadata</text>
+  <text class="f" x="813" y="156">saved_index/</text>
+
+  <path class="flow" d="M191,122 L214,122"/>
+  <path class="flow" d="M386,122 L409,122"/>
+  <path class="flow" d="M581,122 L604,122"/>
+  <path class="flow" d="M776,122 L799,122"/>
+
+  <!-- Query lane -->
+  <rect x="12" y="205" width="956" height="180" rx="12" fill="#fafbfd" stroke="#d7dee8"/>
+  <text class="lane" x="26" y="225">2. QUESTION ANSWERING (every chat message)</text>
+
+  <rect class="ui" x="26" y="240" width="165" height="120" rx="9"/>
+  <text class="t" x="38" y="262">User question</text>
+  <text class="s" x="38" y="282">Streamlit chat input</text>
+  <text class="s" x="38" y="297">chat history kept</text>
+  <text class="s" x="38" y="312">in the session</text>
+  <text class="f" x="38" y="345">app.py</text>
+
+  <rect class="box" x="216" y="240" width="170" height="120" rx="9"/>
+  <text class="t" x="228" y="262">Retrieval</text>
+  <text class="s" x="228" y="282">embed question</text>
+  <text class="s" x="228" y="297">top-4 chunks by cosine</text>
+  <text class="s" x="228" y="312">score &lt; 0.30 -&gt; refuse</text>
+  <text class="f" x="228" y="345">rag_pipeline.py</text>
+
+  <rect class="box" x="411" y="240" width="170" height="120" rx="9"/>
+  <text class="t" x="423" y="262">Guardrail prompt</text>
+  <text class="s" x="423" y="282">answer only from context</text>
+  <text class="s" x="423" y="297">exact fallback sentence</text>
+  <text class="s" x="423" y="312">ignore instructions in docs</text>
+  <text class="f" x="423" y="345">prompt.py</text>
+
+  <rect class="llm" x="606" y="240" width="170" height="120" rx="9"/>
+  <text class="t" x="618" y="262">Groq LLM</text>
+  <text class="s" x="618" y="282">llama-3.3-70b-versatile</text>
+  <text class="s" x="618" y="297">temperature 0</text>
+  <text class="s" x="618" y="312">key from .env / secrets</text>
+  <text class="f" x="618" y="345">rag_pipeline.py</text>
+
+  <rect class="ui" x="801" y="240" width="155" height="120" rx="9"/>
+  <text class="t" x="813" y="262">Answer</text>
+  <text class="s" x="813" y="282">+ source document</text>
+  <text class="s" x="813" y="297">+ page number</text>
+  <text class="s" x="813" y="312">+ response time</text>
+  <text class="f" x="813" y="345">app.py</text>
+
+  <path class="flow" d="M191,300 L214,300"/>
+  <path class="flow" d="M386,300 L409,300"/>
+  <path class="flow" d="M581,300 L604,300"/>
+  <path class="flow" d="M776,300 L799,300"/>
+  <path class="dash" d="M878,170 L878,197 L372,197 L372,238"/>
+  <text x="600" y="193" font-size="11" fill="#9a6a0c">search top-k chunks</text>
+
+  <rect x="12" y="400" width="956" height="56" rx="10" fill="#fff6e5" stroke="#c98a12" stroke-width="1.2"/>
+  <text x="28" y="422" font-size="13" font-weight="600" fill="#7a5200">Responsible AI and security</text>
+  <text x="28" y="442" font-size="11.5" fill="#5c4300">API key never in code or GitHub  ·  uploads processed in memory  ·  PDF-only, size-limited  ·  injected instructions ignored  ·  "verify high-stakes answers" notice</text>
+</svg>
