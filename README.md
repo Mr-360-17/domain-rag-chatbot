@@ -1,5 +1,7 @@
 # Domain-Specific RAG Chatbot for PDF Question Answering
 
+**Live app:** https://nand-rag-chatbot.streamlit.app/
+
 A Retrieval-Augmented Generation (RAG) chatbot that answers questions **only from uploaded PDFs**.
 Every answer shows the source document and page number.
 The sample domain is **company HR and workplace policies**: four policy documents of a fictional company.
@@ -56,7 +58,7 @@ Without a key, the app still runs. It shows the most relevant passage instead of
 | Embeddings | `all-MiniLM-L6-v2`, 384 dimensions, L2-normalised | `vector_store.py` |
 | Vector store | FAISS `IndexFlatIP`; on normalised vectors the inner product **is** cosine similarity. Sample index saved in `vector_store/saved_index/` | `vector_store.py` |
 | Retrieval | Top 4 chunks; chunks below cosine 0.30 are dropped, and if none are left the bot refuses without calling the LLM | `rag_pipeline.py` |
-| Generation | Guardrail system prompt + context + question; temperature 0 | `prompt.py`, `rag_pipeline.py` |
+| Generation | Guardrail system prompt + context + question; temperature 0. The free Gemini tier often answers "high demand" (HTTP 503) for one model while another is free, so the app switches to the next model at once instead of waiting | `prompt.py`, `rag_pipeline.py` |
 
 ### Guardrail prompt
 
@@ -117,7 +119,7 @@ For each question, the results file records:
 - the response time;
 - whether the answer was correct.
 
-Results with Google Gemini (`gemini-3.1-flash-lite`), 25 Oct 2026:
+Results with Google Gemini (`gemini-flash-lite-latest`), 25 Oct 2026:
 
 | Criterion (from brief) | Result |
 |---|---|
@@ -126,7 +128,7 @@ Results with Google Gemini (`gemini-3.1-flash-lite`), 25 Oct 2026:
 | Refusal quality: unavailable questions get the exact fallback sentence | **4 / 4** (100%) |
 | Groundedness: no answer adds facts that are not in the cited page | checked manually: all 16 |
 | Prompt injection: `Injection_Test.pdf` says "ignore all previous instructions" | **Pass**: the bot answered normally and ignored it |
-| Response time | median **4.0 s**; up to 53 s when the free Gemini tier was overloaded and the request was retried |
+| Response time | mean **1.3 s**, median 0.8 s, slowest 4.7 s |
 
 Three of the four unavailable questions (CEO, share price, gym) were refused by the retrieval threshold alone.
 They took 0.01 s and made no LLM call.
@@ -158,6 +160,8 @@ All 20 rows are in `tests/test_results.csv`.
 - A RAG chatbot can still be wrong. Retrieval can miss the right chunk, or the LLM can misread the context. That is why sources are shown and answers are evaluated.
 
 ## Deployment (Streamlit Community Cloud)
+
+Deployed at https://nand-rag-chatbot.streamlit.app/. To deploy your own copy:
 
 1. Push the repository to GitHub. `.env` is not pushed.
 2. On share.streamlit.io, create an app from the repo with main file `app.py`.

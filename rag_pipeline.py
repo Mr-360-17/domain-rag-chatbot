@@ -16,11 +16,13 @@ load_dotenv()
 
 TOP_K = 4                 # brief: retrieve the top 3-5 chunks
 MIN_SCORE = 0.30          # below this cosine similarity, nothing relevant was found
-DEFAULT_MODELS = {"gemini": "gemini-3.1-flash-lite", "groq": "llama-3.3-70b-versatile"}
+DEFAULT_MODELS = {"gemini": "gemini-flash-lite-latest", "groq": "llama-3.3-70b-versatile"}
 KEY_NAMES = {"gemini": "GEMINI_API_KEY", "groq": "GROQ_API_KEY"}
 # Tried in order after the configured model when Gemini is overloaded (HTTP 429/5xx) or
-# a model is retired for the account (HTTP 404).
-GEMINI_FALLBACKS = ["gemini-flash-latest", "gemini-3-flash-preview", "gemini-3.1-flash-lite"]
+# a model is retired for the account (HTTP 404). The free tier often returns 503 for one
+# model while another answers in about a second, so switching beats waiting and retrying.
+GEMINI_FALLBACKS = ["gemini-3-flash-preview", "gemini-3.1-flash-lite", "gemini-flash-latest"]
+FALLBACK_ROUNDS = 2       # passes over the model list before giving up
 RETRYABLE_STATUS = {404, 429, 500, 503, 504}
 
 
@@ -78,11 +80,9 @@ class RAGPipeline:
             if self.provider == "gemini":
                 from google import genai
                 from google.genai import types
-                # 30 s timeout and two quick retries per model; generate() then moves to a fallback model.
+                # No SDK retries: generate() moves straight to the next model on an overload error.
                 self._client = genai.Client(api_key=self.api_key, http_options=types.HttpOptions(
-                    timeout=30_000,
-                    retry_options=types.HttpRetryOptions(attempts=3, initial_delay=1.5, max_delay=6,
-                                                         http_status_codes=[429, 500, 503, 504])))
+                    timeout=25_000, retry_options=types.HttpRetryOptions(attempts=1)))
             else:
                 from groq import Groq
                 self._client = Groq(api_key=self.api_key)
@@ -98,13 +98,16 @@ class RAGPipeline:
             config = types.GenerateContentConfig(
                 system_instruction=SYSTEM_PROMPT, temperature=0, max_output_tokens=800)
             models = list(dict.fromkeys([self.model, *GEMINI_FALLBACKS]))
-            for i, model in enumerate(models):
+            attempts = [(r, m) for r in range(FALLBACK_ROUNDS) for m in models]
+            for i, (round_no, model) in enumerate(attempts):
+                if round_no and model == models[0]:
+                    time.sleep(2)  # every model was busy: short pause before the second pass
                 try:
                     response = self.client.models.generate_content(
                         model=model, contents=user_prompt, config=config)
                     return (response.text or "").strip(), model
                 except errors.APIError as err:
-                    if err.code not in RETRYABLE_STATUS or i == len(models) - 1:
+                    if err.code not in RETRYABLE_STATUS or i == len(attempts) - 1:
                         raise
         response = self.client.chat.completions.create(
             model=self.model,
