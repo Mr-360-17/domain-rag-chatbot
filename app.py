@@ -58,6 +58,7 @@ load_embedding_model()
 st.session_state.setdefault("messages", [])
 st.session_state.setdefault("store", None)
 st.session_state.setdefault("store_label", "")
+st.session_state.setdefault("uploader_id", 0)
 
 # ---------- Sidebar: documents ----------
 with st.sidebar:
@@ -65,6 +66,7 @@ with st.sidebar:
     uploads = st.file_uploader(
         f"Upload PDFs (up to {MAX_FILES} files, {MAX_FILE_SIZE_MB} MB each)",
         type=["pdf"], accept_multiple_files=True,
+        key=f"uploader_{st.session_state.uploader_id}",  # a new key empties the uploader
     )
     if uploads:
         st.caption("Selected: " + ", ".join(f.name for f in uploads))
@@ -92,6 +94,7 @@ with st.sidebar:
         if st.button("Clear documents", width="stretch"):
             st.session_state.store = None
             st.session_state.messages = []
+            st.session_state.uploader_id += 1
             st.rerun()
 
     st.divider()

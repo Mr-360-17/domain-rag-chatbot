@@ -140,5 +140,6 @@ class RAGPipeline:
 
         text, model = self.generate(build_user_prompt(question, relevant))
         text = text or FALLBACK
-        found = FALLBACK.lower().rstrip(".") not in text.lower()
+        # Only a pure refusal counts as "not found"; a partial answer keeps its sources.
+        found = text.strip().strip('"').rstrip(".").lower() != FALLBACK.rstrip(".").lower()
         return Answer(text, relevant if found else [], found, time.perf_counter() - start, "llm", model)
