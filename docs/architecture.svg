@@ -83,10 +83,10 @@
   <text class="f" x="423" y="345">prompt.py</text>
 
   <rect class="llm" x="606" y="240" width="170" height="120" rx="9"/>
-  <text class="t" x="618" y="262">Groq LLM</text>
-  <text class="s" x="618" y="282">llama-3.3-70b-versatile</text>
-  <text class="s" x="618" y="297">temperature 0</text>
-  <text class="s" x="618" y="312">key from .env / secrets</text>
+  <text class="t" x="618" y="262">LLM: Gemini</text>
+  <text class="s" x="618" y="282">flash-lite, temperature 0</text>
+  <text class="s" x="618" y="297">next model if overloaded</text>
+  <text class="s" x="618" y="312">(Groq optional) key in .env</text>
   <text class="f" x="618" y="345">rag_pipeline.py</text>
 
   <rect class="ui" x="801" y="240" width="155" height="120" rx="9"/>
